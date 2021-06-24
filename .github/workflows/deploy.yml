@@ -24,9 +24,9 @@ jobs:
       - name: Setup LeanCloud project
         run: |
           lean login --region ${{ secrets.LEANCLOUD_REGION }} --token ${{ secrets.LEANCLOUD_ACCESS_TOKEN }}
-          mkdir ./.leancloud
-          echo ${{ secrets.LEANCLOUD_APP_ID }} >> ./leancloud/current_app_id
-          echo ${{ secrets.LEANCLOUD_GROUP }} >> ./leancloud/current_group
+          mkdir -p ./.leancloud
+          echo ${{ secrets.LEANCLOUD_APP_ID }} >> ./.leancloud/current_app_id
+          echo ${{ secrets.LEANCLOUD_GROUP }} >> ./.leancloud/current_group
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
