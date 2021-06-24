@@ -23,7 +23,7 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/.local/bin/lean
       - name: Setup LeanCloud project
         run: |
-          lean login --region ${{ secrets.LEANCLOUD_REGION }} --token ${{ secrets.LEANCLOUD_ACCESS_TOKEN }} 1> /​dev/null
+          lean login --region ${{ secrets.LEANCLOUD_REGION }} --token ${{ secrets.LEANCLOUD_ACCESS_TOKEN }} 1> $GITHUB_WORKSPACE/.local/leancloud.log
           mkdir -p ./.leancloud
           echo ${{ secrets.LEANCLOUD_APP_ID }} > ./.leancloud/current_app_id
           echo ${{ secrets.LEANCLOUD_GROUP }} > ./.leancloud/current_group
