@@ -20,8 +20,8 @@ jobs:
           "sudo /bin/sh -c 'wget https://github.com/leancloud/lean-cli/releases/download/v0.25.0/lean-linux-x64 -O /usr/local/bin/lean && chmod +x /usr/local/bin/lean'"
           lean login --region ${{ secrets.LEANCLOUD_REGION }} --token ${{ secrets.LEANCLOUD_ACCESS_TOKEN }}
           mkdir ./.leancloud
-          echo ${{ secret.LEANCLOUD_APP_ID }} >> ./leancloud/current_app_id
-          echo ${{ secret.LEANCLOUD_GROUP }} >> ./leancloud/current_group
+          echo ${{ secrets.LEANCLOUD_APP_ID }} >> ./leancloud/current_app_id
+          echo ${{ secrets.LEANCLOUD_GROUP }} >> ./leancloud/current_group
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
