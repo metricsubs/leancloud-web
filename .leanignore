@@ -2,6 +2,7 @@
 .DS_Store
 .avoscloud/
 .leancloud/
+.local/
 node_modules/
 *.log
 /src/
