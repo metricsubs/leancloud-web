@@ -1,0 +1,37 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.1.5
+        with:
+          node-version: '14'
+      - name: Setup LeanCloud CLI
+        run: |
+          "sudo /bin/sh -c 'wget https://github.com/leancloud/lean-cli/releases/download/v0.25.0/lean-linux-x64 -O /usr/local/bin/lean && chmod +x /usr/local/bin/lean'"
+          lean login --region ${{ secrets.LEANCLOUD_REGION }} --token ${{ secrets.LEANCLOUD_ACCESS_TOKEN }}
+          mkdir ./.leancloud
+          echo ${{ secret.LEANCLOUD_APP_ID }} >> ./leancloud/current_app_id
+          echo ${{ secret.LEANCLOUD_GROUP }} >> ./leancloud/current_group
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install dependencies
+        run: |
+          yarn install
+      - name: Build application
+        run: |
+          yarn build
+      - name: Deploy
+        run: |
+          lean deploy
