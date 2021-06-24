@@ -17,7 +17,12 @@ jobs:
           node-version: '14'
       - name: Setup LeanCloud CLI
         run: |
-          "sudo /bin/sh -c 'wget https://github.com/leancloud/lean-cli/releases/download/v0.25.0/lean-linux-x64 -O /usr/local/bin/lean && chmod +x /usr/local/bin/lean'"
+          mkdir -p $GITHUB_WORKSPACE/bin
+          wget https://github.com/leancloud/lean-cli/releases/download/v0.25.0/lean-linux-x64 -O $GITHUB_WORKSPACE/bin/lean
+          echo "::add-path::$GITHUB_WORKSPACE/bin"
+          chmod +x $GITHUB_WORKSPACE/bin/lean
+      - name: Setup LeanCloud project
+        run: |
           lean login --region ${{ secrets.LEANCLOUD_REGION }} --token ${{ secrets.LEANCLOUD_ACCESS_TOKEN }}
           mkdir ./.leancloud
           echo ${{ secrets.LEANCLOUD_APP_ID }} >> ./leancloud/current_app_id
