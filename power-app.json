@@ -1,0 +1,113 @@
+{
+  "name": "metricsubs_flow",
+  "version": "1.0.0",
+  "displayName": "MetircSubs Flow",
+  "hookBaseURL": "https://lean.metricsubs.cn/api/power-app",
+  "permissions": [
+    "user:match",
+    "task:create",
+    "task:update",
+    "task:send-message",
+    "procedure:create",
+    "procedure:update"
+  ],
+  "homePageURL": "https://metricsubs.cn",
+  "configs": [],
+  "contributions": {
+    "powerItems": [
+      {
+        "name": "timeline_step",
+        "displayName": "时间轴自动化",
+        "inputs": [
+          {
+            "name": "taskId",
+            "displayName": "任务ID",
+            "bind": {
+              "type": "expression",
+              "expression": "task_id"
+            }
+          },
+          {
+            "name": "taskNumericId",
+            "displayName": "任务数字ID",
+            "bind": {
+              "type": "expression",
+              "expression": "task_numericId"
+            }
+          },
+          {
+            "name": "taskBrief",
+            "displayName": "任务简述",
+            "bind": {
+              "type": "expression",
+              "expression": "task_brief"
+            }
+          }
+        ],
+        "fields": []
+      },
+      {
+        "name": "merge_step",
+        "displayName": "合轴自动化",
+        "inputs": [
+          {
+            "name": "taskId",
+            "displayName": "任务ID",
+            "bind": {
+              "type": "expression",
+              "expression": "task_id"
+            }
+          },
+          {
+            "name": "taskNumericId",
+            "displayName": "任务数字ID",
+            "bind": {
+              "type": "expression",
+              "expression": "task_numericId"
+            }
+          },
+          {
+            "name": "taskBrief",
+            "displayName": "任务简述",
+            "bind": {
+              "type": "expression",
+              "expression": "task_brief"
+            }
+          }
+        ],
+        "fields": []
+      },
+      {
+        "name": "correction_step",
+        "displayName": "校正自动化",
+        "inputs": [
+          {
+            "name": "taskId",
+            "displayName": "任务ID",
+            "bind": {
+              "type": "expression",
+              "expression": "task_id"
+            }
+          },
+          {
+            "name": "taskNumericId",
+            "displayName": "任务数字ID",
+            "bind": {
+              "type": "expression",
+              "expression": "task_numericId"
+            }
+          },
+          {
+            "name": "taskBrief",
+            "displayName": "任务简述",
+            "bind": {
+              "type": "expression",
+              "expression": "task_brief"
+            }
+          }
+        ],
+        "fields": []
+      }
+    ]
+  }
+}

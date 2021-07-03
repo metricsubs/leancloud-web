@@ -29,6 +29,7 @@
     "bodyparser",
     "leancloud",
     "leanengine",
+    "makeflow",
     "masterkey",
     "metricsubs"
   ]

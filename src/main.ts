@@ -1,7 +1,7 @@
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
-
 import AV from 'leanengine';
+
 import {router} from './router';
 import {
   LEANCLOUD_APP_ID,
@@ -9,6 +9,7 @@ import {
   LEANCLOUD_APP_MASTER_KEY,
   PORT,
 } from './utils/env';
+import {powerAppMiddleware} from './power-app';
 
 AV.init({
   appId: LEANCLOUD_APP_ID,
@@ -17,6 +18,8 @@ AV.init({
 });
 
 let app = new Koa();
+
+app.use(powerAppMiddleware);
 
 app
   .use(AV.koa() as Koa.Middleware)
